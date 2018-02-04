@@ -18,7 +18,7 @@ USE `micunatruck` ;
 -- Table `micunatruck`.`user_types`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`user_types` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `description` TEXT NULL COMMENT '',
   `flag_active` TINYINT(1) UNSIGNED NULL DEFAULT 1 COMMENT '',
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`user_types` (
 -- Table `micunatruck`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`users` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `user_type_id` INT NOT NULL COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `lastname` VARCHAR(50) NULL COMMENT '',
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`users` (
 -- Table `micunatruck`.`admins`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`admins` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `lastname` VARCHAR(50) NULL COMMENT '',
   `photo` TEXT NULL COMMENT '',
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`admins` (
 -- Table `micunatruck`.`event_status`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`event_status` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `description` TEXT NULL COMMENT '',
   `flag_active` TINYINT(1) UNSIGNED NULL DEFAULT 1 COMMENT '',
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`event_status` (
 -- Table `micunatruck`.`events`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`events` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `user_id` INT NOT NULL COMMENT '',
   `event_status_id` INT NOT NULL COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`events` (
 -- Table `micunatruck`.`postulants`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`postulants` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `user_id` INT NOT NULL COMMENT '',
   `event_id` INT NOT NULL COMMENT '',
   `flag_active` TINYINT(1) UNSIGNED NULL DEFAULT 1 COMMENT '',
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`postulants` (
 -- Table `micunatruck`.`ads`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`ads` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `admin_id` INT NOT NULL COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `description` TEXT NULL COMMENT '',
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`ads` (
 -- Table `micunatruck`.`subscriptions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`subscriptions` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `user_id` INT NOT NULL COMMENT '',
   `price` DECIMAL(11,2) NULL COMMENT '',
   `start_date` TIMESTAMP NULL COMMENT '',
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`subscriptions` (
 -- Table `micunatruck`.`origin_types`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`origin_types` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `description` TEXT NULL COMMENT '',
   `flag_active` TINYINT(1) UNSIGNED NULL DEFAULT 1 COMMENT '',
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`origin_types` (
 -- Table `micunatruck`.`incomes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `micunatruck`.`incomes` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
   `origin_id` INT NOT NULL COMMENT '',
   `origin_type_id` INT NOT NULL COMMENT '',
   `amount` DECIMAL(11,2) NULL COMMENT '',
