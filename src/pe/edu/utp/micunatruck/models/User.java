@@ -1,7 +1,5 @@
 package pe.edu.utp.micunatruck.models;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-
 import java.util.Date;
 
 public class User {
