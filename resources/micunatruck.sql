@@ -230,3 +230,45 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`incomes` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- INSERTING DATA
+-- -----------------------------------------------------
+
+
+
+-- -----------------------------------------------------
+-- Inserting Table `micunatruck`.`user_types`
+-- -----------------------------------------------------
+INSERT INTO user_types (
+	id,
+    name,
+    description,
+    flag_active,
+    created_at
+)
+VALUES (
+	1,
+	'FoodTruck',
+    'Usuario food truck',
+    1,
+    NOW()
+	);
+    
+INSERT INTO user_types (
+	id,
+    name,
+    description,
+    flag_active,
+    created_at
+)
+VALUES (
+	2,
+	'Promotor',
+    'Usuario organizador de eventos',
+    1,
+    NOW()
+	);
+    
+COMMIT;
+
