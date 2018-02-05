@@ -7,19 +7,24 @@ import java.util.Date;
 import java.util.List;
 
 public class UsersEntity extends BaseEntity {
-    private static String DEFAULT_SQL = "SELECT * FROM micunatruck.users";
+    private static String DEFAULT_SQL = "SELECT * FROM micunatruck.users ";
+    private static String DEFAULT_SQL_UPDATE = "UPDATE micunatruck.users SET ";
 
-    private List<User> findByCriteria(String sql){
-        List<User> users;
+    private List<User> findByCriteria(String sql)
+    {
+        List<User> users = null;
+        boolean indHasData = false;
         if(getConnection() != null){
             users = new ArrayList<>();
             try {
-                ResultSet resultSet = getConnection().createStatement()
-                        .executeQuery(sql);
+                ResultSet resultSet = getConnection().createStatement().executeQuery(sql);
+
                 while (resultSet.next()){
+                    indHasData = true;
                     User region = new User()
                             .setId(resultSet.getInt("id"))
                             .setUserTypeId(resultSet.getInt("user_type_id"))
+                            .setName(resultSet.getString("name"))
                             .setLastName(resultSet.getString("lastname"))
                             .setLegalName(resultSet.getString("legal_name"))
                             .setDescription(resultSet.getString("description"))
@@ -32,6 +37,10 @@ public class UsersEntity extends BaseEntity {
                             ;
                     users.add(region);
                 }
+
+                if(!indHasData)
+                    users = null;
+
                 return users;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -41,30 +50,17 @@ public class UsersEntity extends BaseEntity {
     }
 
     public List<User> findAll(){
-        return findByCriteria(DEFAULT_SQL);
+        return findByCriteria(DEFAULT_SQL + "WHERE flag_active = 1");
     }
 
     public User findById(int id){
-        List<User> users = findByCriteria(DEFAULT_SQL + " WHERE id = " + String.valueOf(id));
+        List<User> users = findByCriteria(DEFAULT_SQL + " WHERE flag_active = 1 AND id = " + String.valueOf(id));
         return (users) != null ? users.get(0) : null;
     }
 
     public User findByName(String name){
-        List<User> users = findByCriteria(DEFAULT_SQL+ " WHERE name LIKE '%" + name + "%'");
+        List<User> users = findByCriteria(DEFAULT_SQL + " WHERE name LIKE '%" + name + "%'");
         return (users != null) ? users.get(0) : null;
-    }
-
-    private int getMaxId(){
-        String sql = "SELECT MAX(id) AS max_id FROM users";
-        if(getConnection() != null){
-            try {
-                ResultSet resultSet = getConnection().createStatement().executeQuery(sql);
-                return resultSet.next() ? resultSet.getInt("max_id") : 0;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return 0;
     }
 
     private int updateByCriteria(String sql){
@@ -83,31 +79,26 @@ public class UsersEntity extends BaseEntity {
                        String email, String password, boolean flagActive){
         if(findByName(name) == null){
             if(getConnection() != null){
-                //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date today = new Date();
-                //today.getTime();
-
-                String sql = "INSERT INTO micunatruck.users(" +
-                        "user_type_id, name, lastname, legal_name, description, photo, " +
-                        "address, telephone, email, password, flag_active, created_at) " +
+                String sql =
+                        "INSERT INTO micunatruck.users(" +
+                            "user_type_id, name, lastname, legal_name, description, photo, " +
+                            "address, telephone, email, password, flag_active, created_at) " +
                         "VALUES("
-                        //+ String.valueOf(getMaxId()+1) + "',"
-                        + String.valueOf(userTypeId)
-                        + ",'" + name + "'"
-                        + ",'" + lastName + "'"
-                        + ",'" + legalName + "'"
-                        + ",'" + description + "'"
-                        + ",'" + photo + "'"
-                        + ",'" + address + "'"
-                        + ",'" + telephone + "'"
-                        + ",'" + email + "'"
-                        + ",'" + password + "'"
-                        + "," +  String.valueOf(flagActive ? 1 : 0)
-                        + "," + String.valueOf(today.getTime())
+                            + String.valueOf(userTypeId)
+                            + ",'" + name + "'"
+                            + ",'" + lastName + "'"
+                            + ",'" + legalName + "'"
+                            + ",'" + description + "'"
+                            + ",'" + photo + "'"
+                            + ",'" + address + "'"
+                            + ",'" + telephone + "'"
+                            + ",'" + email + "'"
+                            + ",'" + password + "'"
+                            + "," +  String.valueOf(flagActive ? 1 : 0)
+                            + ", NOW()"
                         + ")";
                 int results = updateByCriteria(sql);
                 if(results > 0){
-
                     User region = new User();
                     return region;
                 }
@@ -117,16 +108,17 @@ public class UsersEntity extends BaseEntity {
     }
 
     public boolean delete(int id){
-        return updateByCriteria("DELETE FROM users WHERE id = " +  String.valueOf(id)) > 0;
+        return updateByCriteria(DEFAULT_SQL_UPDATE + "flag_active = 0, deleted_at = NOW() WHERE id = " +  String.valueOf(id)
+        ) > 0;
     }
 
-    public boolean delete(String name){
-        return updateByCriteria("DELETE FROM users WHERE name = '" +  name + "'") > 0;
-    }
+    /*public boolean delete(String name){
+        return updateByCriteria("DELETE FROM micunatruck.users WHERE name = '" +  name + "'") > 0;
+    }*/
 
     public boolean update(User user){
-        Date today = new Date();
-        return updateByCriteria("UPDATE region SET " +
+        String sql = DEFAULT_SQL_UPDATE +
+                "user_type_id = " + user.getUserTypeId() + ", " +
                 "name = '" + user.getName() + "', " +
                 "lastname = '" + user.getLastName() + "', " +
                 "legal_name = '" + user.getLegalName() + "', " +
@@ -136,8 +128,9 @@ public class UsersEntity extends BaseEntity {
                 "telephone = '" + user.getTelephone() + "', " +
                 "email = '" + user.getEmail() + "', " +
                 "password = '" + user.getPassword() + "', " +
-                "flag_active = '" + user.getFlagActive() + "', " +
-                "updated_at = '" + String.valueOf(today.getTime()) + "', " +
-                "WHERE id = " + String.valueOf(user.getId())) > 0;
+                "flag_active = " + String.valueOf(user.getFlagActive() ? 1 : 0)  + ", " +
+                "updated_at = NOW() " +
+                "WHERE id = " + String.valueOf(user.getId());
+        return updateByCriteria(sql) > 0;
     }
 }

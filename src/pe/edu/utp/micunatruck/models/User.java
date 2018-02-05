@@ -19,7 +19,6 @@ public class User {
     private Date updatedAt = new Date();
     private Date createdAt = new Date();
 
-
     public User()
     {
 
@@ -30,18 +29,18 @@ public class User {
                 String description, String photo, String address, String telephone,
                 String email, String password, boolean flagActive)
     {
-        setId(id);
-        setUserTypeId(userTypeId);
-        setName(name);
-        setLastName(lastName);
-        setLegalName(legalName);
-        setDescription(description);
-        setPhoto(photo);
-        setAddress(address);
-        setTelephone(telephone);
-        setEmail(email);
-        setPassword(password);
-        setFlagActive(flagActive);
+        this.setId(id);
+        this.setUserTypeId(userTypeId);
+        this.setName(name);
+        this.setLastName(lastName);
+        this.setLegalName(legalName);
+        this.setDescription(description);
+        this.setPhoto(photo);
+        this.setAddress(address);
+        this.setTelephone(telephone);
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setFlagActive(flagActive);
     }
 
     public int getId() {
