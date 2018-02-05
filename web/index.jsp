@@ -8,9 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Micuna Truck</title>
+    <title>Start Page</title>
   </head>
   <body>
-    <h1>Micuna Truck</h1>
+    <h1>Start Page</h1>
+    <p>
+        <a href="users?action=new">Register</a>
+    </p>
+    <p>
+        <a href="users?action=home&id=1">Home</a>
+    </p>
+    <p>
+        <a href="#">Sign In</a>
+        <%--<a href="users">List User</a>--%>
+    </p>
   </body>
 </html>
