@@ -48,21 +48,29 @@ public class UsersController extends HttpServlet {
         EventService serviceEvent = new EventService();
         serviceEvent.setConnection(getConnection());
 
+        if(action.equalsIgnoreCase("signin"))
+            url = "loginUser.jsp";
+
         // action = auth, method = Get
         if(action.equalsIgnoreCase("auth"))
         {
             // TODO: falta implementar la autenticación.
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
-
-            List<User> users = service.findAllUsers();
-            request.setAttribute("users", users);
-            url = "showUser.jsp";
+            User user = service.findUserByEmailAndPassword(email, password);
+            if(user != null)
+            {
+                request.setAttribute("user", user);
+                url = "homeUser.jsp";
+            }
+            else{
+                request.setAttribute("msgAuth", "Email or Password is incorrect.");
+                url = "loginUser.jsp";
+            }
         }
 
         // action = events, method = Get
-        if(action.equalsIgnoreCase("home"))
+        /*if(action.equalsIgnoreCase("home"))
         {
             int id = Integer.parseInt(request.getParameter("id"));
             User user = service.findUserById(id);
@@ -71,7 +79,7 @@ public class UsersController extends HttpServlet {
             List<Event> events = serviceEvent.findAllEvents();
             request.setAttribute("events", events);
             url = "homeUser.jsp";
-        }
+        }*/
 
         // action = index, method = Get
         if(action.equalsIgnoreCase("index"))
