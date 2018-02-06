@@ -58,6 +58,13 @@ public class UsersEntity extends BaseEntity {
         return (users) != null ? users.get(0) : null;
     }
 
+    public User findUserByEmailAndPassword(String email, String password){
+        List<User> users = findByCriteria(DEFAULT_SQL +
+                                            " WHERE flag_active = 1 AND email = '" + email + "'" +
+                                            " AND password = '" + password + "'");
+        return (users) != null ? users.get(0) : null;
+    }
+
     public User findByName(String name){
         List<User> users = findByCriteria(DEFAULT_SQL + " WHERE name LIKE '%" + name + "%'");
         return (users != null) ? users.get(0) : null;
