@@ -33,6 +33,10 @@ public class UserService{
         return getUsersEntity() != null ? getUsersEntity().findById(id) : null;
     }
 
+    public User findUserByEmailAndPassword(String email, String password){
+        return getUsersEntity() != null ? getUsersEntity().findUserByEmailAndPassword(email, password) : null;
+    }
+
     public User createUser(int userTypeId, String name, String lastName, String legalName,
                            String description, String photo, String address, String telephone,
                            String email, String password, boolean flagActive){
