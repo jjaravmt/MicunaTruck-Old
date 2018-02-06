@@ -13,15 +13,7 @@
 </head>
 <body>
     <h1>Show User</h1>
-
     <c:import url="_usershow_fieldset.jsp" />
-    <%--<p>Region Id: <c:out value="${user.id}" /></p>--%>
-    <%--<p>Region Name: <c:out value="${user.name}" /></p>--%>
-    <%--<p>Region Name: <c:out value="${user.lastName}" /></p>--%>
-    <%--<p>Region Name: <c:out value="${user.address}" /></p>--%>
-    <%--<p>Region Name: <c:out value="${user.telephone}" /></p>--%>
-    <%--<p>Region Name: <c:out value="${user.email}" /></p>--%>
-
     <p><a href="users">Users List</a></p>
 
 </body>
