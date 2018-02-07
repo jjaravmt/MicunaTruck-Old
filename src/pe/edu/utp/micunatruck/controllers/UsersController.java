@@ -124,6 +124,7 @@ public class UsersController extends HttpServlet {
             request.setAttribute("users", service.findAllUsers());
 
             url = "listUsers.jsp";
+            //url = "homeUsers.jsp";
         }
 
         // action = edit, method = Get
