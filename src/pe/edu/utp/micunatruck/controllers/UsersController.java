@@ -82,7 +82,7 @@ public class UsersController extends HttpServlet {
         // action = show, method = Get
         if(action.equalsIgnoreCase("show"))
         {
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id"));//ShowUser
             User user = service.findUserById(id);
             request.setAttribute("user", user);
             url = "showUser.jsp";
