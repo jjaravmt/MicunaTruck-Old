@@ -34,8 +34,6 @@ public class UsersController extends HttpServlet {
         String action = request.getParameter("action");
         String url = "index.jsp";
 
-        request.setAttribute("indFixed", 0);
-
         if(method.equals("Get") && action == null) action = "index";
         if(method.equals("Post") && action.equalsIgnoreCase("index")) return;
         if(method.equals("Get") && action.equalsIgnoreCase("create"))  return;
@@ -56,14 +54,13 @@ public class UsersController extends HttpServlet {
         // action = auth, method = Get
         if(action.equalsIgnoreCase("auth"))
         {
-            // TODO: falta implementar la autenticación.
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             User user = service.findUserByEmailAndPassword(email, password);
             if(user != null)
             {
                 List<Event> events = serviceEvent.findAllEvents();
-                request.setAttribute("indFixed", 1);
+
                 request.setAttribute("events", events);
                 request.setAttribute("user", user);
                 url = "homeUser.jsp";
@@ -73,18 +70,6 @@ public class UsersController extends HttpServlet {
                 url = "loginUser.jsp";
             }
         }
-
-        // action = events, method = Get
-        /*if(action.equalsIgnoreCase("home"))
-        {
-            int id = Integer.parseInt(request.getParameter("id"));
-            User user = service.findUserById(id);
-            request.setAttribute("user", user);
-
-            List<Event> events = serviceEvent.findAllEvents();
-            request.setAttribute("events", events);
-            url = "homeUser.jsp";
-        }*/
 
         // action = index, method = Get
         if(action.equalsIgnoreCase("index"))
@@ -153,8 +138,13 @@ public class UsersController extends HttpServlet {
             boolean result = service.updateUser(new User(id, 1, name, lastName, "",
                     "", "", "", "",
                     email, password, true));
-            request.setAttribute("users", service.findAllUsers());
-            url = "listUsers.jsp";
+
+            User user = service.findUserById(id);
+            List<Event> events = serviceEvent.findAllEvents();
+
+            request.setAttribute("events", events);
+            request.setAttribute("user", user);
+            url = "homeUser.jsp";
         }
 
         request.getRequestDispatcher(url).forward(request, response);

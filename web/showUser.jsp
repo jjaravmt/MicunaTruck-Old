@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Show User</h1>
-    <c:import url="_usershow_fieldset.jsp" />
+    <c:import url="layouts/_usershow_fieldset.jsp" />
     <p><a href="users">Users List</a></p>
 
 </body>
