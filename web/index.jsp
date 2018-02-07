@@ -14,11 +14,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Start Page</title>
-        <link href="dist/css/bootstrap.css" rel="stylesheet">
+        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dist/css/MicunaTruck.css" rel="stylesheet">
     </head>
     <body>
-        <c:import url="layouts/_header.jsp" />
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <h5 class="my-0 mr-md-auto font-weight-normal">Micuna Truck</h5>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="#">Support</a>
+                <a class="p-2 text-dark" href="#">Pricing</a>
+            </nav>
+            <a class="btn btn-outline-primary" href="users?action=signin">Sign up</a>
+        </div>
 
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">Micuna Truck</h1>

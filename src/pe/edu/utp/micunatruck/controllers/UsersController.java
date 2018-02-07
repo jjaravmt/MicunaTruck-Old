@@ -34,6 +34,8 @@ public class UsersController extends HttpServlet {
         String action = request.getParameter("action");
         String url = "index.jsp";
 
+        request.setAttribute("indFixed", 0);
+
         if(method.equals("Get") && action == null) action = "index";
         if(method.equals("Post") && action.equalsIgnoreCase("index")) return;
         if(method.equals("Get") && action.equalsIgnoreCase("create"))  return;
@@ -60,6 +62,9 @@ public class UsersController extends HttpServlet {
             User user = service.findUserByEmailAndPassword(email, password);
             if(user != null)
             {
+                List<Event> events = serviceEvent.findAllEvents();
+                request.setAttribute("indFixed", 1);
+                request.setAttribute("events", events);
                 request.setAttribute("user", user);
                 url = "homeUser.jsp";
             }
