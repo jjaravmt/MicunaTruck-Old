@@ -21,7 +21,9 @@
 
     <div class="container">
         <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="dist/img/logo_micunatruck.png" alt="" width="100" height="100">
+            <a href="home">
+                <img class="d-block mx-auto mb-4" src="dist/img/logo_micunatruck.png" alt="" width="150" height="150">
+            </a>
             <h2>Checkout form</h2>
         </div>
 
@@ -93,20 +95,5 @@
             </ul>
         </footer>
     </div>
-
-    <%--<h1>New User</h1>--%>
-    <%--<form action="users" method="post">--%>
-        <%--<fieldset>--%>
-            <%--<input type="hidden" name="action" value="create" />--%>
-
-            <%--<label>Type: </label>--%>
-            <%--<select name="userType">--%>
-                <%--<c:forEach var="userType" items="${usersType}">--%>
-                    <%--<option value="${userType.id}">${userType.name}</option>--%>
-                <%--</c:forEach>--%>
-            <%--</select>--%>
-            <%--<jsp:include page="_user_fieldset.jsp"/>--%>
-        <%--</fieldset>--%>
-    <%--</form>--%>
 </body>
 </html>
