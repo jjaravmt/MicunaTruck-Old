@@ -1,6 +1,11 @@
 <nav class="navbar navbar-dark bg-dark flex-md-nowrap fixed-top bg-inverse p-0">
+    <%--<a class="navbar-brand col-sm-3 col-md-2 mr-0" style="padding-top: .75rem; padding-bottom: .75rem;"--%>
+       <%--href="users?action=index">--%>
+        <%--Micuna Truck--%>
+    <%--</a>--%>
+
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" style="padding-top: .75rem; padding-bottom: .75rem;"
-       href="users?action=index">
+       href="home">
         Micuna Truck
     </a>
 

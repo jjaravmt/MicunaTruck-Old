@@ -39,14 +39,11 @@ public class UsersController extends HttpServlet {
         if(method.equals("Get") && action.equalsIgnoreCase("create"))  return;
         if(method.equals("Get") && action.equalsIgnoreCase("update")) return;
 
-        UserService service = new UserService();
+        MicunaTruckService service = new MicunaTruckService();
         service.setConnection(getConnection());
 
         UserTypeService serviceUserType = new UserTypeService();
         serviceUserType.setConnection(getConnection());
-
-        EventService serviceEvent = new EventService();
-        serviceEvent.setConnection(getConnection());
 
         if(action.equalsIgnoreCase("signin"))
             url = "loginUser.jsp";
@@ -59,7 +56,7 @@ public class UsersController extends HttpServlet {
             User user = service.findUserByEmailAndPassword(email, password);
             if(user != null)
             {
-                List<Event> events = serviceEvent.findAllEvents();
+                List<Event> events = service.findAllEvents();
 
                 request.setAttribute("events", events);
                 request.setAttribute("user", user);
@@ -140,7 +137,7 @@ public class UsersController extends HttpServlet {
                     email, password, true));
 
             User user = service.findUserById(id);
-            List<Event> events = serviceEvent.findAllEvents();
+            List<Event> events = service.findAllEvents();
 
             request.setAttribute("events", events);
             request.setAttribute("user", user);

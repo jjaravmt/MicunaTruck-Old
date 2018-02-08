@@ -1,7 +1,7 @@
 package pe.edu.utp.micunatruck.controllers;
 
-import pe.edu.utp.micunatruck.models.EventService;
 import pe.edu.utp.micunatruck.models.Event;
+import pe.edu.utp.micunatruck.models.MicunaTruckService;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -40,7 +40,7 @@ public class EventsController extends HttpServlet {
         if(method.equals("Get") && action.equalsIgnoreCase("create"))  return;
         if(method.equals("Get") && action.equalsIgnoreCase("update")) return;
 
-        EventService service = new EventService();
+        MicunaTruckService service = new MicunaTruckService();
         service.setConnection(getConnection());
 
         // action = index, method = Get

@@ -30,7 +30,6 @@
 
         <div class="row">
 
-
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Micuna Truck</span>
@@ -90,7 +89,7 @@
         <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">© 2018 InkaCoderss</p>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">HomePage</a></li>
+                <li class="list-inline-item"><a href="home">HomePage</a></li>
             </ul>
         </footer>
     </div>

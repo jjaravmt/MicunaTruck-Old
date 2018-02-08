@@ -24,7 +24,7 @@
                 <a class="p-2 text-dark" href="#">Support</a>
                 <a class="p-2 text-dark" href="#">Pricing</a>
             </nav>
-            <a class="btn btn-outline-primary" href="users?action=signin">Sign up</a>
+            <a class="btn btn-outline-primary" href="users?action=signin">Sign In</a>
         </div>
 
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -42,15 +42,15 @@
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>List of Events</li>
                             <li>Postulate</li>
-                            <li>Perfil</li>
+                            <li>Profile</li>
                             <li>Help</li>
                         </ul>
 
-                        <a href="users?action=new" style="text-decoration: none;">
-                            <button type="submit" class="btn btn-lg btn-block btn-outline-primary">
-                                Register
-                            </button>
-                        </a>
+                        <%--<a href="users?action=new" style="text-decoration: none;">--%>
+                            <%--<button type="submit" class="btn btn-lg btn-block btn-outline-primary">--%>
+                                <%--Register--%>
+                            <%--</button>--%>
+                        <%--</a>--%>
                     </div>
                 </div>
                 <div class="card mb-4 box-shadow">
@@ -65,13 +65,19 @@
                             <li>Choose</li>
                             <li>Help center access</li>
                         </ul>
-                        <a href="users?action=new" style="text-decoration: none;">
-                            <button type="button" class="btn btn-lg btn-block btn-primary">Register</button>
-                        </a>
+                        <%--<a href="users?action=new" style="text-decoration: none;">--%>
+                            <%--<button type="button" class="btn btn-lg btn-block btn-primary">Register</button>--%>
+                        <%--</a>--%>
                     </div>
                 </div>
             </div>
-
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow">
+                    <a href="users?action=new" style="text-decoration: none;">
+                        <button type="button" class="btn btn-lg btn-block btn-primary">Register</button>
+                    </a>
+                </div>
+            </div>
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row">
                     <div class="col-12 col-md">
