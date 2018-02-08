@@ -5,8 +5,10 @@ import java.util.List;
 
 public class MicunaTruckService {
     private Connection connection;
+
     private UsersEntity usersEntity;
     private EventsEntity eventsEntity;
+    private UserTypeEntity userTypeEntity;
 
     public Connection getConnection() {
         return connection;
@@ -70,5 +72,24 @@ public class MicunaTruckService {
 
     public List<Event> findAllEvents() {
         return getEventsEntity() != null ? getEventsEntity().findAll() : null;
+    }
+
+    /* USER TYPE */
+    public UserTypeEntity getUsersTypeEntity() {
+        if(getConnection() != null){
+            if(userTypeEntity == null){
+                userTypeEntity = new UserTypeEntity();
+                userTypeEntity.setConnection(getConnection());
+            }
+        }
+        return userTypeEntity;
+    }
+
+    public List<UserType> findAllUsersType() {
+        return getUsersTypeEntity() != null ? getUsersTypeEntity().findAll() : null;
+    }
+
+    public UserType findUserTypeById(int id){
+        return getUsersTypeEntity() != null ? getUsersTypeEntity().findById(id) : null;
     }
 }
