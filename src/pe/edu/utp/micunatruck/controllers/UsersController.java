@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
+//Control de Usuarios
 @WebServlet(name = "UsersController", urlPatterns = "/users")
 public class UsersController extends HttpServlet {
 
@@ -79,7 +79,7 @@ public class UsersController extends HttpServlet {
         // action = show, method = Get
         if(action.equalsIgnoreCase("show"))
         {
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id"));//ShowUser
             User user = service.findUserById(id);
             request.setAttribute("user", user);
             url = "showUser.jsp";
@@ -87,7 +87,7 @@ public class UsersController extends HttpServlet {
 
         // action = new , method = Get
         if(action.equalsIgnoreCase("new")) {
-            request.setAttribute("usersType", serviceUserType.findAllUsersType());
+            request.setAttribute("usersType", serviceUserType.findAllUsersType());//newUser
             url = "newUser.jsp";
         }
 

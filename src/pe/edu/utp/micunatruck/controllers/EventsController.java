@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-
+//Eventos del Controlador
 @WebServlet(name = "EventsController", urlPatterns = "/events")
 public class EventsController extends HttpServlet {
 
@@ -46,6 +46,7 @@ public class EventsController extends HttpServlet {
         // action = index, method = Get
         if(action.equalsIgnoreCase("index"))
         {
+
             List<Event> events = service.findAllEvents();
             request.setAttribute("events", events);
             url = "listEvents.jsp";
