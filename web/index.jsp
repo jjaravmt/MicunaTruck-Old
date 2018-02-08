@@ -27,7 +27,7 @@
             <a class="btn btn-outline-primary" href="users?action=signin">Sign In</a>
         </div>
 
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div class="pricing-header px-3 py-3 pt-md-4 pb-md-3 mx-auto text-center">
             <h1 class="display-4">Micuna Truck</h1>
             <p class="lead">Join our family We are a company with aspirations to be the best in our field. In addition, we consider that our customers are the most important for us.</p>
         </div>
