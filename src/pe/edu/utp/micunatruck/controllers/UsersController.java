@@ -42,9 +42,6 @@ public class UsersController extends HttpServlet {
         MicunaTruckService service = new MicunaTruckService();
         service.setConnection(getConnection());
 
-        UserTypeService serviceUserType = new UserTypeService();
-        serviceUserType.setConnection(getConnection());
-
         if(action.equalsIgnoreCase("signin"))
             url = "loginUser.jsp";
 
@@ -87,7 +84,7 @@ public class UsersController extends HttpServlet {
 
         // action = new , method = Get
         if(action.equalsIgnoreCase("new")) {
-            request.setAttribute("usersType", serviceUserType.findAllUsersType());//newUser
+            request.setAttribute("usersType", service.findAllUsersType());
             url = "newUser.jsp";
         }
 
