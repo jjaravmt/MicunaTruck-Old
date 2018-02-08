@@ -3,9 +3,10 @@ package pe.edu.utp.micunatruck.models;
 import java.sql.Connection;
 import java.util.List;
 
-public class UserService{
+public class MicunaTruckService {
     private Connection connection;
     private UsersEntity usersEntity;
+    private EventsEntity eventsEntity;
 
     public Connection getConnection() {
         return connection;
@@ -15,6 +16,7 @@ public class UserService{
         this.connection = connection;
     }
 
+    /* USERS */
     public UsersEntity getUsersEntity() {
         if(getConnection() != null){
             if(usersEntity == null){
@@ -53,5 +55,20 @@ public class UserService{
     public boolean updateUser(User user){
         return getUsersEntity() != null ?
                 getUsersEntity().update(user) : false;
+    }
+
+    /* EVENTS */
+    public EventsEntity getEventsEntity() {
+        if(getConnection() != null){
+            if(eventsEntity == null){
+                eventsEntity = new EventsEntity();
+                eventsEntity.setConnection(getConnection());
+            }
+        }
+        return eventsEntity;
+    }
+
+    public List<Event> findAllEvents() {
+        return getEventsEntity() != null ? getEventsEntity().findAll() : null;
     }
 }
