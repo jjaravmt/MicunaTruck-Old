@@ -26,7 +26,7 @@ public class EventsEntity extends BaseEntity {
                             .setDescription(resultSet.getString("description"))
                             .setImage(resultSet.getString("image"))
                             .setFlagActive(resultSet.getByte("flag_active"))
-                            ;
+                            ;//comentario
                     events.add(region);
                 }
                 return events;
