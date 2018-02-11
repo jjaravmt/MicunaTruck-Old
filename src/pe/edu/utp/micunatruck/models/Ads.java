@@ -1,7 +1,7 @@
 package pe.edu.utp.micunatruck.models;
 import java.util.Date;
 
-    public class Publicidad {
+    public class Ads {
         private int id;
         private int admin_id;
         private String name;
@@ -16,13 +16,13 @@ import java.util.Date;
         private Date createdAt = new Date();
 
 
-        public Publicidad() {
+        public Ads() {
 
         }
 
-        public Publicidad(int id, int admin_id, String name, String description,
-                          String image, double price, Date start_date, Date end_date,
-                          boolean flagActive, Date deletedAt, Date updatedAt, Date createdAt) {
+        public Ads(int id, int admin_id, String name, String description,
+                   String image, double price, Date start_date, Date end_date,
+                   boolean flagActive, Date deletedAt, Date updatedAt, Date createdAt) {
             this.setId(id);
             this.setAdmin_id(admin_id);
             this.setName(name);
@@ -42,7 +42,7 @@ import java.util.Date;
             return id;
         }
 
-        public Publicidad setId(int id) {
+        public Ads setId(int id) {
             this.id = id;
             return this;
         }
@@ -51,7 +51,7 @@ import java.util.Date;
             return admin_id;
         }
 
-        public Publicidad setAdmin_id(int admin_id) {
+        public Ads setAdmin_id(int admin_id) {
             this.admin_id = admin_id;
             return this;
         }
@@ -60,7 +60,7 @@ import java.util.Date;
             return name;
         }
 
-        public Publicidad setName(String name) {
+        public Ads setName(String name) {
             this.name = name;
             return this;
         }
@@ -69,7 +69,7 @@ import java.util.Date;
             return description;
         }
 
-        public Publicidad setDescription(String description) {
+        public Ads setDescription(String description) {
             this.description = description;
             return this;
         }
@@ -78,7 +78,7 @@ import java.util.Date;
             return image;
         }
 
-        public Publicidad setImage(String image) {
+        public Ads setImage(String image) {
             this.image = image;
             return this;
         }
@@ -87,7 +87,7 @@ import java.util.Date;
             return price;
         }
 
-        public Publicidad setPrice(double price) {
+        public Ads setPrice(double price) {
             this.price = price;
             return this;
         }
@@ -96,7 +96,7 @@ import java.util.Date;
             return start_date;
         }
 
-        public Publicidad setStart_date(Date start_date) {
+        public Ads setStart_date(Date start_date) {
             this.start_date = start_date;
             return this;
         }
@@ -105,7 +105,7 @@ import java.util.Date;
             return end_date;
         }
 
-        public Publicidad setEnd_date(Date end_date) {
+        public Ads setEnd_date(Date end_date) {
             this.end_date = end_date;
             return this;
         }
@@ -114,7 +114,7 @@ import java.util.Date;
             return flagActive;
         }
 
-        public Publicidad setFlagActive(boolean flagActive) {
+        public Ads setFlagActive(boolean flagActive) {
             this.flagActive = flagActive;
             return this;
         }
@@ -123,7 +123,7 @@ import java.util.Date;
             return deletedAt;
         }
 
-        public Publicidad setDeletedAt(Date deletedAt) {
+        public Ads setDeletedAt(Date deletedAt) {
             this.deletedAt = deletedAt;
             return this;
         }
@@ -132,7 +132,7 @@ import java.util.Date;
             return updatedAt;
         }
 
-        public Publicidad setUpdatedAt(Date updatedAt) {
+        public Ads setUpdatedAt(Date updatedAt) {
             this.updatedAt = updatedAt;
             return this;
         }
@@ -141,7 +141,7 @@ import java.util.Date;
             return createdAt;
         }
 
-        public Publicidad setCreatedAt(Date createdAt) {
+        public Ads setCreatedAt(Date createdAt) {
             this.createdAt = createdAt;
             return this;
         }
