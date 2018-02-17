@@ -3,7 +3,7 @@ import java.util.Date;
 
     public class Ads {
         private int id;
-        private int admin_id;
+        private Admin admin;
         private String name;
         private String description;
         private String image;
@@ -24,7 +24,7 @@ import java.util.Date;
                    String image, double price, Date start_date, Date end_date,
                    boolean flagActive, Date deletedAt, Date updatedAt, Date createdAt) {
             this.setId(id);
-            this.setAdmin_id(admin_id);
+            /*this.setAdmin_id(admin_id);*/
             this.setName(name);
             this.setDescription(description);
             this.setImage(image);
@@ -47,14 +47,14 @@ import java.util.Date;
             return this;
         }
 
-        public int getAdmin_id() {
+        /*public int getAdmin_id() {
             return admin_id;
-        }
+        }*/
 
-        public Ads setAdmin_id(int admin_id) {
+        /*public Ads setAdmin_id(int admin_id) {
             this.admin_id = admin_id;
             return this;
-        }
+        }*/
 
         public String getName() {
             return name;
