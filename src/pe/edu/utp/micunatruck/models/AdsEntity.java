@@ -54,6 +54,48 @@ public class AdsEntity extends BaseEntity {
         return (adsRs!=null?adsRs.get(0):null);
     }
 
+    public Ads findByNameSdEd(String name,Date start_date,Date end_date,AdminsEntity adminsEntity){
+        List<Ads> adsRs=findByCriteria(DEFAULT_SQL+"WHERE start_date='"+start_date+"' and end_date='"+end_date+"'",adminsEntity);
+        return (adsRs!=null?adsRs.get(0):null);
+    }
+
+    private int updateByCriteria(String sql){
+        if (getConnection()!=null){
+            try {
+                    return getConnection()
+                        .createStatement()
+                        .executeUpdate(sql);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+
+
+    public Ads create(int idadmin,String name,String description,
+                      String image,Double price,Date start_date,Date end_date,
+                      int idspace, AdminsEntity adminsEntity){
+
+        if (findByNameSdEd(name,start_date,end_date,adminsEntity)==null){
+            if (getConnection()!=null){
+                String sql="INSERT INTO ads(admin_id,name,description,image,price,flag_active,start_date,end_date,created_at,idspace)" +
+                        "values("+idadmin+",'"+name+"','"+description+"','"+image+"',"+price+",1,'"+start_date+"','"+end_date+"',NOW(),"+idspace+")";
+
+                int results=updateByCriteria(sql);
+                if (results>0){
+                    Ads ads=new Ads();
+                }
+            }
+
+        }
+    }
+
+
+
+
+
 
 
 }
