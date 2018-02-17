@@ -15,24 +15,43 @@ import java.util.Date;
         private Date updatedAt = new Date();
         private Date createdAt = new Date();
         /****Campo pendiente de agregar a la bd jose luis  16/02/2018 ****/
-        private int codesp;
+        private int idSpace;
 
 
         public Ads() {
 
         }
 
-        public Ads(int id, Admin admin, String name, String description, String image, double price, Date start_date, Date end_date, boolean flagActive, Date createdAt) {
-            this.setId(id);
-            this.setAdmin(admin);
-            this.setName(name);
-            this.setDescription(description);
-            this.setImage(image);
-            this.setPrice(price);
-            this.setStart_date(start_date);
-            this.setEnd_date(end_date);
-            this.setFlagActive(flagActive);
-            this.setCreatedAt(createdAt);
+
+
+        public Ads(int id, Admin admin, String name, String description, String image, double price, Date start_date, Date end_date, boolean flagActive, Date deletedAt, Date updatedAt, Date createdAt, int idSpace) {
+            this.id = id;
+            this.admin = admin;
+            this.name = name;
+            this.description = description;
+            this.image = image;
+            this.price = price;
+            this.start_date = start_date;
+            this.end_date = end_date;
+            this.flagActive = flagActive;
+            this.deletedAt = deletedAt;
+            this.updatedAt = updatedAt;
+            this.createdAt = createdAt;
+            this.idSpace = idSpace;
+        }
+
+        public Ads(int id, Admin admin, String name, String description, String image, double price, Date start_date, Date end_date, boolean flagActive, Date createdAt, int idSpace) {
+            this.id = id;
+            this.admin = admin;
+            this.name = name;
+            this.description = description;
+            this.image = image;
+            this.price = price;
+            this.start_date = start_date;
+            this.end_date = end_date;
+            this.flagActive = flagActive;
+            this.createdAt = createdAt;
+            this.idSpace = idSpace;
         }
 
         public int getId() {
@@ -143,12 +162,12 @@ import java.util.Date;
             return this;
         }
 
-        public int getCodesp() {
-            return codesp;
+        public int getIdSpace() {
+            return idSpace;
         }
 
-        public Ads setCodesp(int codesp) {
-            this.codesp = codesp;
+        public Ads setIdSpace(int idSpace) {
+            this.idSpace = idSpace;
             return this;
         }
 
