@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`applicants` (
 CREATE TABLE IF NOT EXISTS `micunatruck`.`ads` (
   `id` INT  NOT NULL AUTO_INCREMENT COMMENT '',
   `admin_id` INT NOT NULL COMMENT '',
+  `user_type_id` INT NOT NULL COMMENT '',
   `name` VARCHAR(50) NULL COMMENT '',
   `description` TEXT NULL COMMENT '',
   `image` TEXT NULL COMMENT '',
@@ -162,6 +163,12 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`ads` (
   `idSpace` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_ads_admins1_idx` (`admin_id` ASC)  COMMENT '',
+  INDEX `fk_ads_user_types1_idx` (`user_type_id` ASC)  COMMENT '',
+  CONSTRAINT `fk_ads_user_types1`
+    FOREIGN KEY (`user_type_id`)
+    REFERENCES `micunatruck`.`user_types` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_ads_admins1`
     FOREIGN KEY (`admin_id`)
     REFERENCES `micunatruck`.`admins` (`id`)
