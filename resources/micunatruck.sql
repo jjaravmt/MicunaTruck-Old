@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`applicants` (
   `id` INT  NOT NULL AUTO_INCREMENT COMMENT '',
   `user_id` INT NOT NULL COMMENT '',
   `event_id` INT NOT NULL COMMENT '',
-  `flag_active` TINYINT(1)  NULL DEFAULT 1 COMMENT '',
+  `flag_active` TINYINT(1)  NULL DEFAULT 0 COMMENT '',
   `updated_at` TIMESTAMP NULL COMMENT '',
   `deleted_at` TIMESTAMP NULL COMMENT '',
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
