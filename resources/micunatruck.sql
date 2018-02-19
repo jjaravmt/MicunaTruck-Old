@@ -118,9 +118,9 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`events` (
 
 
 -- -----------------------------------------------------
--- Table `micunatruck`.`postulants`
+-- Table `micunatruck`.`applicants`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `micunatruck`.`postulants` (
+CREATE TABLE IF NOT EXISTS `micunatruck`.`applicants` (
   `id` INT  NOT NULL AUTO_INCREMENT COMMENT '',
   `user_id` INT NOT NULL COMMENT '',
   `event_id` INT NOT NULL COMMENT '',
@@ -129,14 +129,14 @@ CREATE TABLE IF NOT EXISTS `micunatruck`.`postulants` (
   `deleted_at` TIMESTAMP NULL COMMENT '',
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_postulants_users1_idx` (`user_id` ASC)  COMMENT '',
-  INDEX `fk_postulants_events1_idx` (`event_id` ASC)  COMMENT '',
-  CONSTRAINT `fk_postulants_users1`
+  INDEX `fk_applicants_users1_idx` (`user_id` ASC)  COMMENT '',
+  INDEX `fk_applicants_events1_idx` (`event_id` ASC)  COMMENT '',
+  CONSTRAINT `fk_applicants_users1`
     FOREIGN KEY (`user_id`)
     REFERENCES `micunatruck`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_postulants_events1`
+  CONSTRAINT `fk_applicants_events1`
     FOREIGN KEY (`event_id`)
     REFERENCES `micunatruck`.`events` (`id`)
     ON DELETE NO ACTION
