@@ -74,23 +74,23 @@ public class AdsEntity extends BaseEntity {
 
 
 
-    public Ads create(int idadmin,String name,String description,
-                      String image,Double price,Date start_date,Date end_date,
-                      int idspace, AdminsEntity adminsEntity){
-
-        if (findByNameSdEd(name,start_date,end_date,adminsEntity)==null){
-            if (getConnection()!=null){
-                String sql="INSERT INTO ads(admin_id,name,description,image,price,flag_active,start_date,end_date,created_at,idspace)" +
-                        "values("+idadmin+",'"+name+"','"+description+"','"+image+"',"+price+",1,'"+start_date+"','"+end_date+"',NOW(),"+idspace+")";
-
-                int results=updateByCriteria(sql);
-                if (results>0){
-                    Ads ads=new Ads();
-                }
-            }
-
-        }
-    }
+//    public Ads create(int idadmin,String name,String description,
+//                      String image,Double price,Date start_date,Date end_date,
+//                      int idspace, AdminsEntity adminsEntity){
+//
+//        if (findByNameSdEd(name,start_date,end_date,adminsEntity)==null){
+//            if (getConnection()!=null){
+//                String sql="INSERT INTO ads(admin_id,name,description,image,price,flag_active,start_date,end_date,created_at,idspace)" +
+//                        "values("+idadmin+",'"+name+"','"+description+"','"+image+"',"+price+",1,'"+start_date+"','"+end_date+"',NOW(),"+idspace+")";
+//
+//                int results=updateByCriteria(sql);
+//                if (results>0){
+//                    Ads ads=new Ads();
+//                }
+//            }
+//
+//        }
+//    }
 
 
 
