@@ -50,5 +50,74 @@ public class AdminsEntity extends BaseEntity {
         return (admins) != null ? admins.get(0) : null;
     }
 
+    public Admin findUserByEmailAndPassword(String email, String password){
+        List<Admin> admins = findByCriteria(DEFAULT_SQL +
+                " WHERE flag_active = 1 AND email = '" + email + "'" +
+                " AND password = '" + password + "'");
+        return (admins) != null ? admins.get(0) : null;
+    }
+
+    public Admin findByName(String name){
+        List<Admin> admins = findByCriteria(DEFAULT_SQL + " WHERE name LIKE '%" + name + "%'");
+        return (admins != null) ? admins.get(0) : null;
+    }
+
+    private int updateByCriteria(String sql){
+        if(getConnection() != null){
+            try {
+                return getConnection().createStatement().executeUpdate(sql);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
+    }
+
+    public Admin create( String name, String lastName,String photo,
+                       String email, String password, boolean flagActive){
+        if(findByName(name) == null){
+            if(getConnection() != null){
+                String sql =
+                        "INSERT INTO micunatruck.admins(" +
+                                "id, name, lastname, photo, " +
+                                "email, password, flag_active, created_at) " +
+                                "VALUES("
+                                + ",'" + id + "'"
+                                + ",'" + name + "'"
+                                + ",'" + lastName + "'"
+                                + ",'" + photo + "'"
+                                + ",'" + email + "'"
+                                + ",'" + password + "'"
+                                + "," +  String.valueOf(flagActive ? 1 : 0)
+                                + ", NOW()"
+                                + ")";
+                int results = updateByCriteria(sql);
+                if(results > 0){
+                    Admin region = new Admin();
+                    return region;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean delete(int id){
+        return updateByCriteria(DEFAULT_SQL_UPDATE + "flag_active = 0, deleted_at = NOW() WHERE id = " +  String.valueOf(id)
+        ) > 0;
+    }
+
+    public boolean update(Admin admin){
+        String sql = DEFAULT_SQL_UPDATE +
+                "id = '" + admin.getId() + "', " +
+                "name = '" + admin.getName() + "', " +
+                "lastname = '" + admin.getLastName() + "', " +
+                "photo = '" + admin.getPhoto() + "', " +
+                "email = '" + admin.getEmail() + "', " +
+                "password = '" + admin.getPassword() + "', " +
+                "flag_active = " + String.valueOf(admin.getFlagActive() ? 1 : 0)  + ", " +
+                "updated_at = NOW() " +
+                "WHERE id = " + String.valueOf(user.getId());
+        return updateByCriteria(sql) > 0;
+    }
 
 }
