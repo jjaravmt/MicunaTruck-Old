@@ -8,7 +8,8 @@ import java.util.Date;
 
 public class AdminsEntity extends BaseEntity {
 
-    public static String DEFAULT_SQL = "SELECT * FROM admins";
+    private static String DEFAULT_SQL = "SELECT * FROM admins";
+    private static String DEFAULT_SQL_UPDATE = "UPDATE micunatruck.admins SET ";
 
     private List<Admin> findByCriteria(String sql) {
         List<Admin> admins = null;
@@ -21,7 +22,7 @@ public class AdminsEntity extends BaseEntity {
                     indHasData = true;
                     Admin region = new Admin()
                             .setId(resultSet.getInt("id"))
-                            .setLastName(resultSet.getString("name"))
+                            .setName(resultSet.getString("name"))
                             .setLastName(resultSet.getString("lastname"))
                             .setPhoto(resultSet.getString("photo"))
                             .setEmail(resultSet.getString("email"))
@@ -73,7 +74,7 @@ public class AdminsEntity extends BaseEntity {
         return 0;
     }
 
-    public Admin create( String name, String lastName,String photo,
+    public Admin create( int id, String name, String lastName,String photo,
                        String email, String password, boolean flagActive){
         if(findByName(name) == null){
             if(getConnection() != null){
@@ -114,9 +115,9 @@ public class AdminsEntity extends BaseEntity {
                 "photo = '" + admin.getPhoto() + "', " +
                 "email = '" + admin.getEmail() + "', " +
                 "password = '" + admin.getPassword() + "', " +
-                "flag_active = " + String.valueOf(admin.getFlagActive() ? 1 : 0)  + ", " +
+                "flag_active = " + String.valueOf(admin.getFlag_active() ? 1 : 0)  + ", " +
                 "updated_at = NOW() " +
-                "WHERE id = " + String.valueOf(user.getId());
+                "WHERE id = " + String.valueOf(admin.getId());
         return updateByCriteria(sql) > 0;
     }
 
